@@ -16,7 +16,7 @@ This is an react app to learn the basic operations crud in firebase/firestore da
 
 Create a project on the firebase after sigining up 
 
-After that Create an new-app as Web-app
+After that Create an new-app as Web-app(cuz we r using an on webdev)
 After that Create an react app using 
 
 ```bash
