@@ -32,7 +32,7 @@ paste into the firebaseConfig.js
 
 note that you can use any name of the firebaseConfig.js
 
-#After that add this to the firebaseConfig.js file
+After that add this to the firebaseConfig.js file
 
 ```python
 import { getFirestore } from 'firebase/firestore';
