@@ -3,7 +3,7 @@
 // 
 import { db } from './firebaseConfig';
 // importing all the function/method that we need to use to performed crud operation
-import {collection,addDoc, onSnapshot} from 'firebase/firestore';
+import {collection,addDoc, onSnapshot ,deleteDoc, doc} from 'firebase/firestore';
 import {  useEffect, useState } from 'react';
 
 function App() {
@@ -50,6 +50,17 @@ function App() {
         setAllColors(snapshot.docs.map(doc=>({...doc.data(),id: doc.id})));
       })
   }
+  // this function gonna delete that specific color onclick
+  // we will simply use the deleteDoc fucntion 
+  const deletingColor = async(id) =>{
+    // see how I use doc instead of colollection function/method becz
+    // doc method is used to access a specific document within a collection, 
+    // while the collection method is used to access a collection of documents.
+    // but I need to delete that specific document that store in the colors collection
+    // so i have to use doc method
+      const docRef = doc(db,'Colors',id);
+      await deleteDoc(docRef);
+  }
   
   useEffect(()=>{
     readingColor();
@@ -79,6 +90,8 @@ function App() {
                       <div className='custom-div' style={{backgroundColor: items.color}}></div>
                       {/* showing the color code I store in the Colors collection */}
                       <div>Color Code : {items.color}</div>
+                      {/* just a button to delete the sepcific color onclick  */}
+                      <button onClick={()=>{deletingColor(items.id)}}>delete</button>
                   </div>
           })
         }
